@@ -44,9 +44,12 @@ namespace DataBaseForms {
 	private: System::Windows::Forms::Button^ button6;
 	private: System::Windows::Forms::Button^ button7;
 	private: System::Windows::Forms::TextBox^ textBoxName;
-	private: System::Windows::Forms::TextBox^ textBoxGroup;
 	private: System::Windows::Forms::TextBox^ textBoxPhone;
-	private: System::Windows::Forms::TextBox^ textBoxClass;
+
+	private: System::Windows::Forms::TextBox^ textBoxEmail;
+	private: System::Windows::Forms::TextBox^ textBoxSalary;
+
+
 
 
 
@@ -57,15 +60,17 @@ namespace DataBaseForms {
 	private: System::Windows::Forms::Label^ label9;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label10;
-	private: System::Windows::Forms::Label^ label11;
+
 	private: System::Windows::Forms::Label^ label12;
-	private: System::Windows::Forms::TextBox^ textBoxMark;
+
 
 	private: System::Windows::Forms::TextBox^ textBoxDate;
+	private: System::Windows::Forms::TextBox^ textBoxMPhone;
 
-	private: System::Windows::Forms::TextBox^ textBoxTEMail;
 
-	private: System::Windows::Forms::TextBox^ textBoxTName;
+	private: System::Windows::Forms::TextBox^ textBoxManager;
+
+
 
 	private: System::Windows::Forms::GroupBox^ groupBox1;
 	private: System::Windows::Forms::ListView^ DataTable;
@@ -73,13 +78,18 @@ namespace DataBaseForms {
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 	private: System::Windows::Forms::ColumnHeader^ columnID;
 	private: System::Windows::Forms::ColumnHeader^ columnNAME;
-	private: System::Windows::Forms::ColumnHeader^ columnPHONE;
-	private: System::Windows::Forms::ColumnHeader^ columnCLASS;
-	private: System::Windows::Forms::ColumnHeader^ columnTNAME;
-	private: System::Windows::Forms::ColumnHeader^ columnTMAIL;
+	private: System::Windows::Forms::ColumnHeader^ columnEMAIL;
+	private: System::Windows::Forms::ColumnHeader^ columnSALARY;
+	private: System::Windows::Forms::ColumnHeader^ columnMANAGER;
+	private: System::Windows::Forms::ColumnHeader^ columnMPHONE;
+
+
+
+
 	private: System::Windows::Forms::ColumnHeader^ columnDATE;
-	private: System::Windows::Forms::ColumnHeader^ columnMARK;
-	private: System::Windows::Forms::ColumnHeader^ columnGROUP;
+
+	private: System::Windows::Forms::ColumnHeader^ columnPHONE;
+
 	private: System::Windows::Forms::ListView^ RequestRes;
 	private: System::Windows::Forms::ColumnHeader^ columnHeader1;
 	private: System::Windows::Forms::ColumnHeader^ columnHeader2;
@@ -89,7 +99,7 @@ namespace DataBaseForms {
 	private: System::Windows::Forms::ColumnHeader^ columnHeader6;
 	private: System::Windows::Forms::ColumnHeader^ columnHeader7;
 	private: System::Windows::Forms::ColumnHeader^ columnHeader8;
-	private: System::Windows::Forms::ColumnHeader^ columnHeader9;
+
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
@@ -117,32 +127,29 @@ namespace DataBaseForms {
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->textBoxName = (gcnew System::Windows::Forms::TextBox());
-			this->textBoxGroup = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxPhone = (gcnew System::Windows::Forms::TextBox());
-			this->textBoxClass = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxEmail = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxSalary = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label10 = (gcnew System::Windows::Forms::Label());
-			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->label12 = (gcnew System::Windows::Forms::Label());
-			this->textBoxMark = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxDate = (gcnew System::Windows::Forms::TextBox());
-			this->textBoxTEMail = (gcnew System::Windows::Forms::TextBox());
-			this->textBoxTName = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxMPhone = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxManager = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->DataTable = (gcnew System::Windows::Forms::ListView());
 			this->columnID = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnNAME = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnGROUP = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnPHONE = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnCLASS = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnTNAME = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnTMAIL = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnEMAIL = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnSALARY = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnMANAGER = (gcnew System::Windows::Forms::ColumnHeader());
+			this->columnMPHONE = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnDATE = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnMARK = (gcnew System::Windows::Forms::ColumnHeader());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->RequestRes = (gcnew System::Windows::Forms::ListView());
 			this->columnHeader1 = (gcnew System::Windows::Forms::ColumnHeader());
@@ -153,7 +160,6 @@ namespace DataBaseForms {
 			this->columnHeader6 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader7 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->columnHeader8 = (gcnew System::Windows::Forms::ColumnHeader());
-			this->columnHeader9 = (gcnew System::Windows::Forms::ColumnHeader());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
@@ -175,38 +181,47 @@ namespace DataBaseForms {
 			// 
 			// button2
 			// 
+			this->button2->BackColor = System::Drawing::Color::MediumOrchid;
+			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->button2->ForeColor = System::Drawing::Color::Ivory;
 			this->button2->Location = System::Drawing::Point(22, 249);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(218, 33);
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"Добавить данные";
-			this->button2->UseVisualStyleBackColor = true;
+			this->button2->UseVisualStyleBackColor = false;
 			this->button2->Click += gcnew System::EventHandler(this, &MainFrame::button2_Click);
 			// 
 			// button3
 			// 
+			this->button3->BackColor = System::Drawing::Color::MediumOrchid;
+			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->button3->ForeColor = System::Drawing::Color::Ivory;
 			this->button3->Location = System::Drawing::Point(21, 326);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(219, 34);
 			this->button3->TabIndex = 2;
 			this->button3->Text = L"Удаление данных";
-			this->button3->UseVisualStyleBackColor = true;
+			this->button3->UseVisualStyleBackColor = false;
 			this->button3->Click += gcnew System::EventHandler(this, &MainFrame::button3_Click);
 			// 
 			// button4
 			// 
+			this->button4->BackColor = System::Drawing::Color::MediumOrchid;
+			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->button4->ForeColor = System::Drawing::Color::Ivory;
 			this->button4->Location = System::Drawing::Point(21, 288);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(219, 32);
 			this->button4->TabIndex = 3;
 			this->button4->Text = L"Поиск данных";
-			this->button4->UseVisualStyleBackColor = true;
+			this->button4->UseVisualStyleBackColor = false;
 			this->button4->Click += gcnew System::EventHandler(this, &MainFrame::button4_Click);
 			// 
 			// button6
@@ -240,26 +255,26 @@ namespace DataBaseForms {
 			this->textBoxName->Size = System::Drawing::Size(110, 20);
 			this->textBoxName->TabIndex = 7;
 			// 
-			// textBoxGroup
-			// 
-			this->textBoxGroup->Location = System::Drawing::Point(130, 55);
-			this->textBoxGroup->Name = L"textBoxGroup";
-			this->textBoxGroup->Size = System::Drawing::Size(110, 20);
-			this->textBoxGroup->TabIndex = 8;
-			// 
 			// textBoxPhone
 			// 
-			this->textBoxPhone->Location = System::Drawing::Point(130, 81);
+			this->textBoxPhone->Location = System::Drawing::Point(130, 55);
 			this->textBoxPhone->Name = L"textBoxPhone";
 			this->textBoxPhone->Size = System::Drawing::Size(110, 20);
-			this->textBoxPhone->TabIndex = 9;
+			this->textBoxPhone->TabIndex = 8;
 			// 
-			// textBoxClass
+			// textBoxEmail
 			// 
-			this->textBoxClass->Location = System::Drawing::Point(130, 107);
-			this->textBoxClass->Name = L"textBoxClass";
-			this->textBoxClass->Size = System::Drawing::Size(110, 20);
-			this->textBoxClass->TabIndex = 10;
+			this->textBoxEmail->Location = System::Drawing::Point(130, 81);
+			this->textBoxEmail->Name = L"textBoxEmail";
+			this->textBoxEmail->Size = System::Drawing::Size(110, 20);
+			this->textBoxEmail->TabIndex = 9;
+			// 
+			// textBoxSalary
+			// 
+			this->textBoxSalary->Location = System::Drawing::Point(130, 107);
+			this->textBoxSalary->Name = L"textBoxSalary";
+			this->textBoxSalary->Size = System::Drawing::Size(110, 20);
+			this->textBoxSalary->TabIndex = 10;
 			// 
 			// label1
 			// 
@@ -279,9 +294,9 @@ namespace DataBaseForms {
 				static_cast<System::Byte>(204)));
 			this->label7->Location = System::Drawing::Point(19, 107);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(46, 18);
+			this->label7->Size = System::Drawing::Size(49, 18);
 			this->label7->TabIndex = 22;
-			this->label7->Text = L"Class";
+			this->label7->Text = L"Salary";
 			// 
 			// label8
 			// 
@@ -290,9 +305,9 @@ namespace DataBaseForms {
 				static_cast<System::Byte>(204)));
 			this->label8->Location = System::Drawing::Point(19, 81);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(51, 18);
+			this->label8->Size = System::Drawing::Size(45, 18);
 			this->label8->TabIndex = 23;
-			this->label8->Text = L"Phone";
+			this->label8->Text = L"Email";
 			// 
 			// label9
 			// 
@@ -301,9 +316,9 @@ namespace DataBaseForms {
 				static_cast<System::Byte>(204)));
 			this->label9->Location = System::Drawing::Point(19, 55);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(50, 18);
+			this->label9->Size = System::Drawing::Size(51, 18);
 			this->label9->TabIndex = 24;
-			this->label9->Text = L"Group";
+			this->label9->Text = L"Phone";
 			// 
 			// label6
 			// 
@@ -312,9 +327,9 @@ namespace DataBaseForms {
 				static_cast<System::Byte>(204)));
 			this->label6->Location = System::Drawing::Point(19, 159);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(106, 18);
+			this->label6->Size = System::Drawing::Size(111, 18);
 			this->label6->TabIndex = 32;
-			this->label6->Text = L"Teacher e-mail";
+			this->label6->Text = L"Manager phone";
 			// 
 			// label10
 			// 
@@ -327,17 +342,6 @@ namespace DataBaseForms {
 			this->label10->TabIndex = 31;
 			this->label10->Text = L"Date";
 			// 
-			// label11
-			// 
-			this->label11->AutoSize = true;
-			this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label11->Location = System::Drawing::Point(19, 211);
-			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(42, 18);
-			this->label11->TabIndex = 30;
-			this->label11->Text = L"Mark";
-			// 
 			// label12
 			// 
 			this->label12->AutoSize = true;
@@ -345,16 +349,9 @@ namespace DataBaseForms {
 				static_cast<System::Byte>(204)));
 			this->label12->Location = System::Drawing::Point(19, 133);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(62, 18);
+			this->label12->Size = System::Drawing::Size(107, 18);
 			this->label12->TabIndex = 29;
-			this->label12->Text = L"Teacher";
-			// 
-			// textBoxMark
-			// 
-			this->textBoxMark->Location = System::Drawing::Point(130, 211);
-			this->textBoxMark->Name = L"textBoxMark";
-			this->textBoxMark->Size = System::Drawing::Size(110, 20);
-			this->textBoxMark->TabIndex = 28;
+			this->label12->Text = L"Manager name";
 			// 
 			// textBoxDate
 			// 
@@ -363,42 +360,41 @@ namespace DataBaseForms {
 			this->textBoxDate->Size = System::Drawing::Size(110, 20);
 			this->textBoxDate->TabIndex = 27;
 			// 
-			// textBoxTEMail
+			// textBoxMPhone
 			// 
-			this->textBoxTEMail->Location = System::Drawing::Point(130, 159);
-			this->textBoxTEMail->Name = L"textBoxTEMail";
-			this->textBoxTEMail->Size = System::Drawing::Size(110, 20);
-			this->textBoxTEMail->TabIndex = 26;
+			this->textBoxMPhone->Location = System::Drawing::Point(130, 159);
+			this->textBoxMPhone->Name = L"textBoxMPhone";
+			this->textBoxMPhone->Size = System::Drawing::Size(110, 20);
+			this->textBoxMPhone->TabIndex = 26;
 			// 
-			// textBoxTName
+			// textBoxManager
 			// 
-			this->textBoxTName->Location = System::Drawing::Point(130, 133);
-			this->textBoxTName->Name = L"textBoxTName";
-			this->textBoxTName->Size = System::Drawing::Size(110, 20);
-			this->textBoxTName->TabIndex = 25;
+			this->textBoxManager->Location = System::Drawing::Point(130, 133);
+			this->textBoxManager->Name = L"textBoxManager";
+			this->textBoxManager->Size = System::Drawing::Size(110, 20);
+			this->textBoxManager->TabIndex = 25;
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->groupBox1->BackColor = System::Drawing::Color::DarkViolet;
 			this->groupBox1->Controls->Add(this->label6);
 			this->groupBox1->Controls->Add(this->label10);
-			this->groupBox1->Controls->Add(this->label11);
 			this->groupBox1->Controls->Add(this->label12);
 			this->groupBox1->Controls->Add(this->button3);
 			this->groupBox1->Controls->Add(this->button4);
-			this->groupBox1->Controls->Add(this->textBoxMark);
 			this->groupBox1->Controls->Add(this->textBoxDate);
-			this->groupBox1->Controls->Add(this->textBoxTEMail);
-			this->groupBox1->Controls->Add(this->textBoxTName);
+			this->groupBox1->Controls->Add(this->textBoxMPhone);
+			this->groupBox1->Controls->Add(this->textBoxManager);
 			this->groupBox1->Controls->Add(this->label9);
 			this->groupBox1->Controls->Add(this->label8);
 			this->groupBox1->Controls->Add(this->label7);
 			this->groupBox1->Controls->Add(this->label1);
-			this->groupBox1->Controls->Add(this->textBoxClass);
+			this->groupBox1->Controls->Add(this->textBoxSalary);
+			this->groupBox1->Controls->Add(this->textBoxEmail);
 			this->groupBox1->Controls->Add(this->textBoxPhone);
-			this->groupBox1->Controls->Add(this->textBoxGroup);
 			this->groupBox1->Controls->Add(this->textBoxName);
 			this->groupBox1->Controls->Add(this->button2);
+			this->groupBox1->ForeColor = System::Drawing::SystemColors::ControlLightLight;
 			this->groupBox1->Location = System::Drawing::Point(26, 166);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(260, 385);
@@ -407,10 +403,12 @@ namespace DataBaseForms {
 			// 
 			// DataTable
 			// 
-			this->DataTable->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(9) {
+			this->DataTable->BackColor = System::Drawing::Color::DarkViolet;
+			this->DataTable->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(8) {
 				this->columnID, this->columnNAME,
-					this->columnGROUP, this->columnPHONE, this->columnCLASS, this->columnTNAME, this->columnTMAIL, this->columnDATE, this->columnMARK
+					this->columnPHONE, this->columnEMAIL, this->columnSALARY, this->columnMANAGER, this->columnMPHONE, this->columnDATE
 			});
+			this->DataTable->ForeColor = System::Drawing::SystemColors::ControlLightLight;
 			this->DataTable->HideSelection = false;
 			this->DataTable->Location = System::Drawing::Point(325, 199);
 			this->DataTable->Name = L"DataTable";
@@ -418,7 +416,7 @@ namespace DataBaseForms {
 			this->DataTable->TabIndex = 34;
 			this->DataTable->UseCompatibleStateImageBehavior = false;
 			this->DataTable->View = System::Windows::Forms::View::Details;
-			this->DataTable->ColumnClick += gcnew System::Windows::Forms::ColumnClickEventHandler(this, &DataBaseForms::MainFrame::ColumnClick);
+			this->DataTable->ColumnClick += gcnew System::Windows::Forms::ColumnClickEventHandler(this, &MainFrame::ColumnClick);
 			// 
 			// columnID
 			// 
@@ -430,44 +428,38 @@ namespace DataBaseForms {
 			this->columnNAME->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->columnNAME->Width = 110;
 			// 
-			// columnGROUP
-			// 
-			this->columnGROUP->Text = L"GROUP";
-			// 
 			// columnPHONE
 			// 
 			this->columnPHONE->Text = L"PHONE";
-			this->columnPHONE->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->columnPHONE->Width = 110;
 			// 
-			// columnCLASS
+			// columnEMAIL
 			// 
-			this->columnCLASS->Text = L"CLASS";
-			this->columnCLASS->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->columnCLASS->Width = 110;
+			this->columnEMAIL->Text = L"EMAIL";
+			this->columnEMAIL->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->columnEMAIL->Width = 110;
 			// 
-			// columnTNAME
+			// columnSALARY
 			// 
-			this->columnTNAME->Text = L"TEACHER NAME";
-			this->columnTNAME->Width = 120;
+			this->columnSALARY->Text = L"SALARY";
+			this->columnSALARY->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->columnSALARY->Width = 110;
 			// 
-			// columnTMAIL
+			// columnMANAGER
 			// 
-			this->columnTMAIL->Text = L"TEACHER E-MAIL";
-			this->columnTMAIL->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->columnTMAIL->Width = 140;
+			this->columnMANAGER->Text = L"MANAGER NAME";
+			this->columnMANAGER->Width = 120;
+			// 
+			// columnMPHONE
+			// 
+			this->columnMPHONE->Text = L"MANAGER PHONE";
+			this->columnMPHONE->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->columnMPHONE->Width = 140;
 			// 
 			// columnDATE
 			// 
 			this->columnDATE->Text = L"DATE";
 			this->columnDATE->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->columnDATE->Width = 100;
-			// 
-			// columnMARK
-			// 
-			this->columnMARK->Text = L"MARK";
-			this->columnMARK->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->columnMARK->Width = 80;
 			// 
 			// openFileDialog1
 			// 
@@ -476,11 +468,12 @@ namespace DataBaseForms {
 			// 
 			// RequestRes
 			// 
-			this->RequestRes->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(9) {
+			this->RequestRes->BackColor = System::Drawing::Color::DarkViolet;
+			this->RequestRes->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(8) {
 				this->columnHeader1, this->columnHeader2,
-					this->columnHeader3, this->columnHeader4, this->columnHeader5, this->columnHeader6, this->columnHeader7, this->columnHeader8,
-					this->columnHeader9
+					this->columnHeader3, this->columnHeader4, this->columnHeader5, this->columnHeader6, this->columnHeader7, this->columnHeader8
 			});
+			this->RequestRes->ForeColor = System::Drawing::SystemColors::ControlLightLight;
 			this->RequestRes->HideSelection = false;
 			this->RequestRes->Location = System::Drawing::Point(325, 51);
 			this->RequestRes->Name = L"RequestRes";
@@ -501,28 +494,28 @@ namespace DataBaseForms {
 			// 
 			// columnHeader3
 			// 
-			this->columnHeader3->Text = L"GROUP";
+			this->columnHeader3->Text = L"PHONE";
 			// 
 			// columnHeader4
 			// 
-			this->columnHeader4->Text = L"PHONE";
+			this->columnHeader4->Text = L"EMAIL";
 			this->columnHeader4->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->columnHeader4->Width = 110;
 			// 
 			// columnHeader5
 			// 
-			this->columnHeader5->Text = L"CLASS";
+			this->columnHeader5->Text = L"SALARY";
 			this->columnHeader5->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->columnHeader5->Width = 110;
 			// 
 			// columnHeader6
 			// 
-			this->columnHeader6->Text = L"TEACHER NAME";
+			this->columnHeader6->Text = L"MANAGER NAME";
 			this->columnHeader6->Width = 120;
 			// 
 			// columnHeader7
 			// 
-			this->columnHeader7->Text = L"TEACHER E-MAIL";
+			this->columnHeader7->Text = L"MANAGER PHONE";
 			this->columnHeader7->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->columnHeader7->Width = 140;
 			// 
@@ -532,17 +525,12 @@ namespace DataBaseForms {
 			this->columnHeader8->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->columnHeader8->Width = 100;
 			// 
-			// columnHeader9
-			// 
-			this->columnHeader9->Text = L"MARK";
-			this->columnHeader9->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->columnHeader9->Width = 80;
-			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->label2->ForeColor = System::Drawing::SystemColors::Control;
 			this->label2->Location = System::Drawing::Point(705, 166);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(106, 25);
@@ -554,6 +542,7 @@ namespace DataBaseForms {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->label3->ForeColor = System::Drawing::SystemColors::Control;
 			this->label3->Location = System::Drawing::Point(685, 23);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(151, 25);
@@ -565,6 +554,7 @@ namespace DataBaseForms {
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->label4->ForeColor = System::Drawing::SystemColors::Control;
 			this->label4->Location = System::Drawing::Point(122, 23);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(66, 25);
@@ -581,6 +571,8 @@ namespace DataBaseForms {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->ClientSize = System::Drawing::Size(1246, 621);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
@@ -606,12 +598,13 @@ private: System::Void openFileDialog1_FileOk(System::Object^ sender, System::Com
 private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e);
 	   void ShowTable();
 	   void SetDefSettingsTextBoxes();
-	   void AddRowReqTable(STUDENT student);
+	   void AddRowReqTable(ELEMENT element);
 	   void ClearReqTable();
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e);
 	   private: System::Void ColumnClick(System::Object^ sender, ColumnClickEventArgs^ e);
 private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e);
+
 };
 }

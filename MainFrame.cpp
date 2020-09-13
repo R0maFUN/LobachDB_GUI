@@ -93,33 +93,31 @@ void DataBaseForms::MainFrame::ShowTable()
     DataTable->Items->Clear();
     for (int i = 0; i < table->GetSize(); ++i)
     {
-        STUDENT student = (*table)[i];
-        string a = to_string(student.GetId());
+        ELEMENT element = (*table)[i];
+        string a = to_string(element.GetId());
         String^ b;
         ListViewItem^ item = DataTable->Items->Add(convert_string_To_String(a, b));
-        a = student.GetName();
+        a = element.GetName();
         item->SubItems->Add(convert_string_To_String(a, b));
 
-        a = to_string(student.GetGroup());
+        a = element.GetPhone();
         item->SubItems->Add(convert_string_To_String(a, b));
 
-        a = student.GetPhone();
+        a = element.GetEmail();
         item->SubItems->Add(convert_string_To_String(a, b));
 
-        a = student.GetLessonName();
+        a = to_string(element.GetSalary());
         item->SubItems->Add(convert_string_To_String(a, b));
 
-        a = student.GetTeacherName();
+        a = element.GetManagerName();
         item->SubItems->Add(convert_string_To_String(a, b));
 
-        a = student.GetTEMail();
+        a = element.GetManagerPhone();
         item->SubItems->Add(convert_string_To_String(a, b));
 
-        a = student.GetDate();
+        a = element.GetDate();
         item->SubItems->Add(convert_string_To_String(a, b));
 
-        a = to_string(student.GetMark());
-        item->SubItems->Add(convert_string_To_String(a, b));
     }
 }
 
@@ -127,13 +125,12 @@ void DataBaseForms::MainFrame::SetDefSettingsTextBoxes()
 {
     cliext::vector<TextBox^> textBoxes;
     textBoxes.push_back(textBoxName);
-    textBoxes.push_back(textBoxGroup);
     textBoxes.push_back(textBoxPhone);
-    textBoxes.push_back(textBoxClass);
-    textBoxes.push_back(textBoxTName);
-    textBoxes.push_back(textBoxTEMail);
+    textBoxes.push_back(textBoxEmail);
+    textBoxes.push_back(textBoxSalary);
+    textBoxes.push_back(textBoxManager);
+    textBoxes.push_back(textBoxMPhone);
     textBoxes.push_back(textBoxDate);
-    textBoxes.push_back(textBoxMark);
 
     for (int i = 0; i < textBoxes.size(); ++i)
     {
@@ -143,33 +140,31 @@ void DataBaseForms::MainFrame::SetDefSettingsTextBoxes()
 
 }
 
-void DataBaseForms::MainFrame::AddRowReqTable(STUDENT student)
+void DataBaseForms::MainFrame::AddRowReqTable(ELEMENT element)
 {
-    string a = to_string(student.GetId());
+    string a = to_string(element.GetId());
     String^ b;
     ListViewItem^ item = RequestRes->Items->Add(convert_string_To_String(a, b));
-    a = student.GetName();
+
+    a = element.GetName();
     item->SubItems->Add(convert_string_To_String(a, b));
 
-    a = to_string(student.GetGroup());
+    a = element.GetPhone();
     item->SubItems->Add(convert_string_To_String(a, b));
 
-    a = student.GetPhone();
+    a = element.GetEmail();
     item->SubItems->Add(convert_string_To_String(a, b));
 
-    a = student.GetLessonName();
+    a = to_string(element.GetSalary());
     item->SubItems->Add(convert_string_To_String(a, b));
 
-    a = student.GetTeacherName();
+    a = element.GetManagerName();
     item->SubItems->Add(convert_string_To_String(a, b));
 
-    a = student.GetTEMail();
+    a = element.GetManagerPhone();
     item->SubItems->Add(convert_string_To_String(a, b));
 
-    a = student.GetDate();
-    item->SubItems->Add(convert_string_To_String(a, b));
-
-    a = to_string(student.GetMark());
+    a = element.GetDate();
     item->SubItems->Add(convert_string_To_String(a, b));
 }
 
@@ -185,13 +180,12 @@ System::Void DataBaseForms::MainFrame::button2_Click(System::Object^ sender, Sys
 
     cliext::vector<TextBox^> textBoxes;
     textBoxes.push_back(textBoxName);
-    textBoxes.push_back(textBoxGroup);
     textBoxes.push_back(textBoxPhone);
-    textBoxes.push_back(textBoxClass);
-    textBoxes.push_back(textBoxTName);
-    textBoxes.push_back(textBoxTEMail);
+    textBoxes.push_back(textBoxEmail);
+    textBoxes.push_back(textBoxSalary);
+    textBoxes.push_back(textBoxManager);
+    textBoxes.push_back(textBoxMPhone);
     textBoxes.push_back(textBoxDate);
-    textBoxes.push_back(textBoxMark);
 
     for(int i = 0; i < textBoxes.size() ; ++i)
         if (textBoxes[i]->Text == "")
@@ -229,16 +223,16 @@ System::Void DataBaseForms::MainFrame::button2_Click(System::Object^ sender, Sys
         return;
     }
 
-    STUDENT* stud;
+    ELEMENT* stud;
 
     if (table)
     {
-        stud = new STUDENT(data2, table->GetSize());
-        table->AddStudent(stud);
+        stud = new ELEMENT(data2, table->GetSize());
+        table->AddElement(stud);
     }
     else {
-        stud = new STUDENT(data2, 0);
-        vector<STUDENT*> studs;
+        stud = new ELEMENT(data2, 0);
+        vector<ELEMENT*> studs;
         studs.push_back(stud);
         table = new TABLE(studs);
     }
@@ -252,13 +246,12 @@ System::Void DataBaseForms::MainFrame::button4_Click(System::Object^ sender, Sys
 {
     cliext::vector<TextBox^> textBoxes;
     textBoxes.push_back(textBoxName);
-    textBoxes.push_back(textBoxGroup);
     textBoxes.push_back(textBoxPhone);
-    textBoxes.push_back(textBoxClass);
-    textBoxes.push_back(textBoxTName);
-    textBoxes.push_back(textBoxTEMail);
+    textBoxes.push_back(textBoxEmail);
+    textBoxes.push_back(textBoxSalary);
+    textBoxes.push_back(textBoxManager);
+    textBoxes.push_back(textBoxMPhone);
     textBoxes.push_back(textBoxDate);
-    textBoxes.push_back(textBoxMark);
 
     vector<string> values;
     values.push_back("0");
@@ -294,7 +287,7 @@ System::Void DataBaseForms::MainFrame::button4_Click(System::Object^ sender, Sys
         return;
     }
 
-    vector<STUDENT*> res = table->SearchStudents(values);
+    vector<ELEMENT*> res = table->SearchElements(values);
 
     if (res.size() > 0)
     {
@@ -311,13 +304,12 @@ System::Void DataBaseForms::MainFrame::button3_Click(System::Object^ sender, Sys
 {
     cliext::vector<TextBox^> textBoxes;
     textBoxes.push_back(textBoxName);
-    textBoxes.push_back(textBoxGroup);
     textBoxes.push_back(textBoxPhone);
-    textBoxes.push_back(textBoxClass);
-    textBoxes.push_back(textBoxTName);
-    textBoxes.push_back(textBoxTEMail);
+    textBoxes.push_back(textBoxEmail);
+    textBoxes.push_back(textBoxSalary);
+    textBoxes.push_back(textBoxManager);
+    textBoxes.push_back(textBoxMPhone);
     textBoxes.push_back(textBoxDate);
-    textBoxes.push_back(textBoxMark);
 
     vector<string> values;
     values.push_back("0");
@@ -353,7 +345,7 @@ System::Void DataBaseForms::MainFrame::button3_Click(System::Object^ sender, Sys
         return;
     }
 
-    vector<STUDENT*> res = table->SearchStudents(values);
+    vector<ELEMENT*> res = table->SearchElements(values);
 
     if (res.size() > 0)
     {
@@ -361,7 +353,7 @@ System::Void DataBaseForms::MainFrame::button3_Click(System::Object^ sender, Sys
         for (int i = 0; i < res.size(); ++i)
             AddRowReqTable(*(res[i]));
 
-        table->DeleteStudents(values);
+        table->DeleteElements(values);
         ShowTable();
     }
     else

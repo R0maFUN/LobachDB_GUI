@@ -12,5 +12,3 @@ int StringToInt(string str); // conversation string to integer
 bool isDay(string str);
 bool isMonth(string str);
 bool isYear(string str);
-//void PrintStudent(STUDENT* student);
-//void PrintIntoFile(string filename, vector<STUDENT*>* students);

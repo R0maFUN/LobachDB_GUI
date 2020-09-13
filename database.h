@@ -4,34 +4,34 @@
 
 using namespace std;
 
-class STUDENT{
+class ELEMENT{
 private:
 	unsigned int id;
 	string name;
-	unsigned int group;
 	string phone;
-	string lessonName;
-	string teacherName;
-	string teacherEmail;
+	string email;
+	int salary;
+	string managerName;
+	string managerPhone;
 	string date;
-	int mark;
 public:
-	STUDENT(string Data , int ID);
+	ELEMENT(string Data, int ID);
 	unsigned int GetId();
 	string GetName();
 	string GetPhone();
-	unsigned int GetGroup();
-	string GetLessonName();
-	string GetTeacherName();
-	string GetTEMail();
+	string GetEmail();
+	int GetSalary();
+	string GetManagerName();
+	string GetManagerPhone();
 	string GetDate();
-	int GetMark();
 	void ChangePhone(string newPhone);
-	void ChangeGroup(unsigned int newGroup);
-	void ChangeMark(int newMark);
+	void ChangeEmail(string newEmail);
+	void ChangeSalary(int newSalary);
+	void ChangeManager(string newManager);
+	void ChangeManagerPhone(string newManagerPhone);
 	void PrintConsole();
-	void PrintFile(ofstream * out);
-	bool operator==(STUDENT second);
+	void PrintFile(ofstream* out);
+	bool operator==(ELEMENT second);
 };
 
 class TABLE
@@ -39,41 +39,39 @@ class TABLE
 private:
 	unsigned int maxsize = 20;
 	unsigned int size = 0;
-	vector<STUDENT*> students;
+	vector<ELEMENT*> elements;
 public:
-	TABLE(vector<STUDENT*> _students);
+	TABLE(vector<ELEMENT*> _elements);
 	TABLE(string filename);
-	STUDENT* FindStudentByName(string name);
-	STUDENT* FindStudentById(unsigned int ID);
-	STUDENT* FindStudentByPhone(string phone);
+	ELEMENT* FindElementByName(string name);
+	ELEMENT* FindElementById(unsigned int ID);
+	ELEMENT* FindElementByPhone(string phone);
 	void ChangePhoneById(unsigned int id, string newPhone);
-	void ChangeGroupById(unsigned int id, unsigned int newGroup);
-	void ChangeMarkById(unsigned int id, int newMark);
-	void AddStudent(STUDENT* student);
-	void DeleteStudentByName(string name);
-	void DeleteStudentByPhone(string phone);
-	void DeleteStudentById(unsigned int ID);
-	void DeleteAllCopies(STUDENT student);
-	void ChangeElement(unsigned int id, STUDENT* newStudent);
+	void ChangeEmailById(unsigned int id, string newEmail);
+	void ChangeSalaryById(unsigned int id, int newSalary);
+	void ChangeManagerById(unsigned int id, string newManager);
+	void ChangeManagerPhoneById(unsigned int id, string newManagerPhone);
+	void AddElement(ELEMENT* element);
+	void DeleteElementByName(string name);
+	void DeleteElementByPhone(string phone);
+	void DeleteElementById(unsigned int ID);
+	void DeleteAllCopies(ELEMENT element);
+	void ChangeElement(unsigned int id, ELEMENT* newElement);
 	void Sort(int byType); // byType = anything - id, 1 - name, 2 - group, 4 - lessonName , 5 - teacherName, 8 - mark
 	void PrintIntoFile(string filename);
 	void PrintIntoConsole();
 	int GetSize();
-	vector<STUDENT*>& SearchStudents(vector<string> values);
-	void DeleteStudents(vector<string> values);
-	STUDENT& operator[](int index);
+	vector<ELEMENT*>& SearchElements(vector<string> values);
+	void DeleteElements(vector<string> values);
+	ELEMENT& operator[](int index);
 };
 
-bool SortByName(STUDENT* a, STUDENT* b);
+bool SortByName(ELEMENT* a, ELEMENT* b);
 
-bool SortById(STUDENT* a, STUDENT* b);
+bool SortById(ELEMENT* a, ELEMENT* b);
 
-bool SortByGroup(STUDENT* a, STUDENT* b);
-bool SortByLName(STUDENT* a, STUDENT* b);
-
-bool SortByTName(STUDENT* a, STUDENT* b);
-
-bool SortByMark(STUDENT* a, STUDENT* b);
+bool SortByEmail(ELEMENT* a, ELEMENT* b);
+bool SortByMName(ELEMENT* a, ELEMENT* b);
 
 TABLE* InitTable(string filename);
 
