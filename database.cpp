@@ -7,112 +7,121 @@
 
 enum KEYS {
 	name,
-	group,
 	phone,
-	lessonName,
-	teacherName,
-	teacherEmail,
-	date,
-	mark
+	email,
+	salary,
+	managerName,
+	managerPhone,
+	date
 };
 
-STUDENT::STUDENT(string Data , int ID)
+ELEMENT::ELEMENT(string Data , int ID)
 {
 	vector<string>* parsed = ParseString(Data);
 	this->name = (*parsed)[KEYS::name];
-	this->group = StringToInt((*parsed)[KEYS::group]);
 	this->phone = (*parsed)[KEYS::phone];
-	this->lessonName = (*parsed)[KEYS::lessonName];
-	this->teacherName = (*parsed)[KEYS::teacherName];
-	this->teacherEmail = (*parsed)[KEYS::teacherEmail];
+	this->email = (*parsed)[KEYS::email];
+	this->salary = StringToInt((*parsed)[KEYS::salary]);
+	this->managerName = (*parsed)[KEYS::managerName];
+	this->managerPhone = (*parsed)[KEYS::managerPhone];
 	this->date = (*parsed)[KEYS::date];
-	this->mark = StringToInt((*parsed)[KEYS::mark]);
 	this->id = ID;
 }
 
-unsigned int STUDENT::GetId()
+
+unsigned int ELEMENT::GetId()
 {
 	return id;
 }
 
-string STUDENT::GetName()
+string ELEMENT::GetName()
 {
 	return name;
 }
 
-string STUDENT::GetPhone()
+string ELEMENT::GetPhone()
 {
 	return phone;
 }
 
-unsigned int STUDENT::GetGroup()
+string ELEMENT::GetEmail()
 {
-	return group;
+	return email;
 }
 
-string STUDENT::GetLessonName()
+int ELEMENT::GetSalary()
 {
-	return lessonName;
+	return salary;
 }
 
-string STUDENT::GetTeacherName()
+string ELEMENT::GetManagerName()
 {
-	return teacherName;
+	return managerName;
 }
 
-string STUDENT::GetTEMail()
+string ELEMENT::GetManagerPhone()
 {
-	return teacherEmail;
+	return managerPhone;
 }
 
-string STUDENT::GetDate()
+string ELEMENT::GetDate()
 {
 	return date;
 }
 
-int STUDENT::GetMark()
-{
-	return mark;
-}
 
-void STUDENT::ChangePhone(string newPhone)
+
+void ELEMENT::ChangePhone(string newPhone)
 {
 	this->phone = newPhone;
 }
 
-void STUDENT::ChangeGroup(unsigned int newGroup)
+void ELEMENT::ChangeEmail(string newEmail)
 {
-	this->group = newGroup;
+	this->email = newEmail;
 }
 
-void STUDENT::ChangeMark(int newMark)
+void ELEMENT::ChangeSalary(int newSalary)
 {
-	this->mark = newMark;
+	this->salary = newSalary;
 }
 
-void STUDENT::PrintConsole()
+void ELEMENT::ChangeManager(string newManager)
 {
-	cout << name << " " << group << " " << phone << " " << lessonName << " " << teacherName << " " << teacherEmail << " " << date << " " << mark << endl;
+	this->managerName = newManager;
 }
 
-void STUDENT::PrintFile(ofstream * out)
+void ELEMENT::ChangeManagerPhone(string newManagerPhone)
 {
-	*out << name << " " << group << " " << phone << " " << lessonName << " " << teacherName << " " << teacherEmail << " " << date << " " << mark << endl;
+	this->managerPhone = newManagerPhone;
 }
 
-bool STUDENT::operator==(STUDENT second)
+
+
+void ELEMENT::PrintConsole()
 {
-	if (name != second.name || group != second.group || phone != second.phone || lessonName != second.lessonName || teacherName != second.teacherName || teacherEmail != second.teacherEmail || date != second.date || mark != second.mark)
+	cout << name << " " << phone << " " << email << " " << salary << " " << managerName << " " << managerPhone << " " << date << " " << endl;
+}
+
+void ELEMENT::PrintFile(ofstream* out)
+{
+	*out << name << " " << phone << " " << email << " " << salary << " " << managerName << " " << managerPhone << " " << date << " " << endl;
+}
+
+
+bool ELEMENT::operator==(ELEMENT second)
+{
+	if (name != second.name || email != second.email || phone != second.phone || salary != second.salary || managerName != second.managerName || managerPhone != second.managerPhone || date != second.date)
 		return false;
 	return true;
 }
 
-TABLE::TABLE(vector<STUDENT*> _students)
+TABLE::TABLE(vector<ELEMENT*> _elements)
 {
-	for (int i = 0; i < _students.size(); ++i)
-		students.push_back(_students[i]);
-	size = students.size();
-	maxsize = students.max_size();
+	for (int i = 0; i < _elements.size(); ++i)
+		elements.push_back(_elements[i]);
+	size = elements.size();
+	maxsize = elements.max_size();
 }
 
 TABLE::TABLE(string filename)
@@ -120,103 +129,115 @@ TABLE::TABLE(string filename)
 	vector<string>* Data = ParseFile(filename);
 	for (int i = 0; i < Data->size(); ++i)
 	{
-		STUDENT* test = new STUDENT((*Data)[i] , i);
-		students.push_back(test);
+		ELEMENT* test = new ELEMENT((*Data)[i] , i);
+		elements.push_back(test);
 	}
-	size = students.size();
-	maxsize = students.max_size();
+	size = elements.size();
+	maxsize = elements.max_size();
 }
 
-STUDENT* TABLE::FindStudentByName(string name)
+ELEMENT* TABLE::FindElementByName(string name)
 {
-	for (int i = 0; i < students.size(); ++i)
-		if ( (students[i])->GetName() == name)
-			return students[i];
+	for (int i = 0; i < elements.size(); ++i)
+		if ( (elements[i])->GetName() == name)
+			return elements[i];
 }
 
-STUDENT* TABLE::FindStudentById(unsigned int ID)
+ELEMENT* TABLE::FindElementById(unsigned int ID)
 {
-	for (int i = 0; i < students.size(); ++i)
-		if ((students[i])->GetId() == ID)
-			return students[i];
+	for (int i = 0; i < elements.size(); ++i)
+		if ((elements[i])->GetId() == ID)
+			return elements[i];
 }
 
-STUDENT* TABLE::FindStudentByPhone(string phone)
+ELEMENT* TABLE::FindElementByPhone(string phone)
 {
-	for (int i = 0; i < students.size(); ++i)
-		if ((students[i])->GetPhone() == phone)
-			return students[i];
+	for (int i = 0; i < elements.size(); ++i)
+		if ((elements[i])->GetPhone() == phone)
+			return elements[i];
 }
 
 void TABLE::ChangePhoneById(unsigned int id, string newPhone)
 {
-	STUDENT* tmp = FindStudentById(id);
+	ELEMENT* tmp = FindElementById(id);
 	tmp->ChangePhone(newPhone);
 }
 
-void TABLE::ChangeGroupById(unsigned int id, unsigned int newGroup)
+void TABLE::ChangeEmailById(unsigned int id, string newEmail)
 {
-	STUDENT* tmp = FindStudentById(id);
-	tmp->ChangeGroup(newGroup);
+	ELEMENT* tmp = FindElementById(id);
+	tmp->ChangeEmail(newEmail);
 }
 
-void TABLE::ChangeMarkById(unsigned int id, int newMark)
+void TABLE::ChangeSalaryById(unsigned int id, int newSalary)
 {
-	STUDENT* tmp = FindStudentById(id);
-	tmp->ChangeMark(newMark);
+	ELEMENT* tmp = FindElementById(id);
+	tmp->ChangeSalary(newSalary);
 }
 
-void TABLE::AddStudent(STUDENT* student)
+void TABLE::ChangeManagerById(unsigned int id, string newManager)
 {
-	students.push_back(student);
+	ELEMENT* tmp = FindElementById(id);
+	tmp->ChangeManager(newManager);
+}
+
+void TABLE::ChangeManagerPhoneById(unsigned int id, string newManagerPhone)
+{
+	ELEMENT* tmp = FindElementById(id);
+	tmp->ChangeManagerPhone(newManagerPhone);
+}
+
+void TABLE::AddElement(ELEMENT* element)
+{
+	elements.push_back(element);
 	size++;
 }
 
-void TABLE::DeleteStudentByName(string name)
+void TABLE::DeleteElementByName(string name)
 {
 	int i = 0;
-	for (i = 0; i < students.size(); ++i)
-		if ((students[i])->GetName() == name)
+	for (i = 0; i < elements.size(); ++i)
+		if ((elements[i])->GetName() == name)
 			break;
-	students.erase(students.begin() + i);
+	elements.erase(elements.begin() + i);
 }
 
-void TABLE::DeleteStudentByPhone(string phone)
+void TABLE::DeleteElementByPhone(string phone)
 {
 	int i = 0;
-	for (i = 0; i < students.size(); ++i)
-		if ((students[i])->GetPhone() == phone)
+	for (i = 0; i < elements.size(); ++i)
+		if ((elements[i])->GetPhone() == phone)
 			break;
-	students.erase(students.begin() + i);
+	elements.erase(elements.begin() + i);
 }
 
-void TABLE::DeleteStudentById(unsigned int ID)
+void TABLE::DeleteElementById(unsigned int ID)
 {
 	int i = 0;
-	for (i = 0; i < students.size(); ++i)
-		if ((students[i])->GetId() == ID)
+	for (i = 0; i < elements.size(); ++i)
+		if ((elements[i])->GetId() == ID)
 		{
-			students.erase(students.begin() + i);
+			elements.erase(elements.begin() + i);
 			break;
 		}
 }
 
-void TABLE::DeleteAllCopies(STUDENT student)
+void TABLE::DeleteAllCopies(ELEMENT element)
 {
-	for (int i = 0; i < students.size(); ++i)
+	for (int i = 0; i < elements.size(); ++i)
 	{
-		if ( *(students[i]) == student)
+		if ( *(elements[i]) == element)
 		{
-			students.erase(students.begin() + i);
+			elements.erase(elements.begin() + i);
 			--i;
 		}
 	}
 }
 
-void TABLE::ChangeElement(unsigned int id, STUDENT* newStudent)
+void TABLE::ChangeElement(unsigned int id, ELEMENT* newElement)
 {
-	STUDENT* tmp = FindStudentById(id);
-	tmp = newStudent;
+	ELEMENT* tmp = FindElementById(id);
+	tmp = newElement;
 }
 
 void TABLE::Sort(int byType)
@@ -224,43 +245,37 @@ void TABLE::Sort(int byType)
 	switch (byType)
 	{
 	case 1:
-		sort(students.begin(), students.end(), SortByName);
+		sort(elements.begin(), elements.end(), SortByName);
 		break;
 	case 2:
-		sort(students.begin(), students.end(), SortByGroup);
+		sort(elements.begin(), elements.end(), SortByEmail);
 		break;
 	case 4:
-		sort(students.begin(), students.end(), SortByLName);
-		break;
-	case 5:
-		sort(students.begin(), students.end(), SortByTName);
-		break;
-	case 8:
-		sort(students.begin(), students.end(), SortByMark);
+		sort(elements.begin(), elements.end(), SortByMName);
 		break;
 	default:
-		sort(students.begin(), students.end(), SortById);
+		sort(elements.begin(), elements.end(), SortById);
 		break;
 	}
 }
 
 void TABLE::PrintIntoFile(string filename)
 {
-	ofstream out(filename);
-	for (int i = 0; i < students.size(); ++i)
+	ofstream out(filename);                      // ofstream
+	for (int i = 0; i < elements.size(); ++i)
 	{
-		STUDENT* student = students[i];
-		student->PrintFile(&out);
+		ELEMENT* element = elements[i];
+		element->PrintFile(&out);
 	}	
 	out.close();
 }
 
 void TABLE::PrintIntoConsole()
 {
-	for (int i = 0; i < students.size(); ++i)
+	for (int i = 0; i < elements.size(); ++i)
 	{
-		STUDENT* student = students[i];
-		student->PrintConsole();
+		ELEMENT* element = elements[i];
+		element->PrintConsole();
 	}
 }
 
@@ -269,116 +284,102 @@ int TABLE::GetSize()
 	return size;
 }
 
-vector<STUDENT*>& TABLE::SearchStudents(vector<string> values)
+vector<ELEMENT*>& TABLE::SearchElements(vector<string> values)
 {
-	vector<STUDENT*>* result = new vector<STUDENT*>;
+	vector<ELEMENT*>* result = new vector<ELEMENT*>;
 	for (int i = 0; i < size; ++i)
 	{
 		
 		if (values[0] != "0")
-			if (this->students[i]->GetId() != StringToInt(values[0]))
+			if (this->elements[i]->GetId() != StringToInt(values[0]))
 				continue;
 		if (values[1] != "0")
-			if (this->students[i]->GetName() != values[1])
+			if (this->elements[i]->GetName() != values[1])
 				continue;
 		if (values[2] != "0")
-			if (this->students[i]->GetGroup() != StringToInt(values[2]))
+			if (this->elements[i]->GetPhone() != values[2])
 				continue;
 		if (values[3] != "0")
-			if (this->students[i]->GetPhone() != values[3])
+			if (this->elements[i]->GetEmail() != values[3])
 				continue;
 		if (values[4] != "0")
-			if (this->students[i]->GetLessonName() != values[4])
+			if (this->elements[i]->GetSalary() != StringToInt(values[4]))
 				continue;
 		if (values[5] != "0")
-			if (this->students[i]->GetTeacherName() != values[5])
+			if (this->elements[i]->GetManagerName() != values[5])
 				continue;
 		if (values[6] != "0")
-			if (this->students[i]->GetTEMail() != values[6])
+			if (this->elements[i]->GetManagerPhone() != values[6])
 				continue;
 		if (values[7] != "0")
-			if (this->students[i]->GetDate() != values[7])
+			if (this->elements[i]->GetDate() != values[7])
 				continue;
-		if (values[8] != "0")
-			if (this->students[i]->GetMark() != StringToInt(values[8]))
-				continue;
-		result->push_back(this->students[i]);
+		result->push_back(this->elements[i]);
 	}
 	return *result;
 }
 
-void TABLE::DeleteStudents(vector<string> values)
+void TABLE::DeleteElements(vector<string> values)
 {
 	for (int i = 0; i < size; ++i)
 	{
 
 		if (values[0] != "0")
-			if (this->students[i]->GetId() != StringToInt(values[0]))
+			if (this->elements[i]->GetId() != StringToInt(values[0]))
 				continue;
 		if (values[1] != "0")
-			if (this->students[i]->GetName() != values[1])
+			if (this->elements[i]->GetName() != values[1])
 				continue;
 		if (values[2] != "0")
-			if (this->students[i]->GetGroup() != StringToInt(values[2]))
+			if (this->elements[i]->GetPhone() != values[2])
 				continue;
 		if (values[3] != "0")
-			if (this->students[i]->GetPhone() != values[3])
+			if (this->elements[i]->GetEmail() != values[3])
 				continue;
 		if (values[4] != "0")
-			if (this->students[i]->GetLessonName() != values[4])
+			if (this->elements[i]->GetSalary() != StringToInt(values[4]))
 				continue;
 		if (values[5] != "0")
-			if (this->students[i]->GetTeacherName() != values[5])
+			if (this->elements[i]->GetManagerName() != values[5])
 				continue;
 		if (values[6] != "0")
-			if (this->students[i]->GetTEMail() != values[6])
+			if (this->elements[i]->GetManagerPhone() != values[6])
 				continue;
 		if (values[7] != "0")
-			if (this->students[i]->GetDate() != values[7])
+			if (this->elements[i]->GetDate() != values[7])
 				continue;
-		if (values[8] != "0")
-			if (this->students[i]->GetMark() != StringToInt(values[8]))
-				continue;
-		this->students.erase(this->students.begin() + i);
+		this->elements.erase(this->elements.begin() + i);
 		size--;
 		i--;
 	}
 }
 
-STUDENT& TABLE::operator[](int index)
+ELEMENT& TABLE::operator[](int index)
 {
-	return *this->students[index];
+	return *this->elements[index];
 }
 
-bool SortByName(STUDENT* a, STUDENT* b)
+
+bool SortByName(ELEMENT* a, ELEMENT* b)
 {
 	return a->GetName() < b->GetName();
 }
 
-bool SortById(STUDENT* a, STUDENT* b)
+bool SortById(ELEMENT* a, ELEMENT* b)
 {
 	return a->GetId() < b->GetId();
 }
 
-bool SortByGroup(STUDENT* a, STUDENT* b)
+bool SortByEmail(ELEMENT* a, ELEMENT* b)
 {
-	return a->GetGroup() < b->GetGroup();
+	return a->GetEmail() < b->GetEmail();
 }
 
-bool SortByLName(STUDENT* a, STUDENT* b)
+bool SortByMName(ELEMENT* a, ELEMENT* b)
 {
-	return a->GetLessonName() < b->GetLessonName();
+	return a->GetManagerName() < b->GetManagerName();
 }
 
-bool SortByTName(STUDENT* a, STUDENT* b)
-{
-	return a->GetTeacherName() < b->GetTeacherName();
-}
-
-bool SortByMark(STUDENT* a, STUDENT* b)
-{
-	return a->GetMark() < b->GetMark();
-}
 
 TABLE* InitTable(string filename)
 {
